@@ -1,0 +1,30 @@
+@api = http://localhost:3000/api
+
+### getting users
+GET {{api}}/users
+
+### create user
+POST {{api}}/users
+Content-Type: application/json
+
+{
+  "username": "John Doe",
+  "password": "password123",
+  "email": "johm@gmail.com"
+}
+
+### get user
+GET {{api}}/users/100
+
+### update users
+PUT {{api}}/users/9
+Content-Type: application/json
+
+{
+  "username": "John Doe",
+  "password": "password123",
+  "email": "john@outlookc.om"
+}
+
+### delete users
+DELETE {{api}}/users/7
