@@ -21,6 +21,7 @@ DB_PASSWORD = mysecretpassword
 
 ### Installation
 
+```
 git clone https://github.com/FaztWeb/flask-postgres-crud-spa
 
 cd flask-postgres-crud-spa
@@ -28,3 +29,4 @@ cd flask-postgres-crud-spa
 pip install -r requirements.txt
 
 python app.py
+```
