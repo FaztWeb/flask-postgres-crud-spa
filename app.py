@@ -1,15 +1,21 @@
 from flask import Flask, jsonify, request, send_file
 from psycopg2 import connect, extras
 from cryptography.fernet import Fernet
+from os import environ
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 key = Fernet.generate_key()
 
-host = "localhost"
-database = "usersdb"
-username = "postgres"
-password = "mysecretpassword"
-port = 5432
+host = environ.get('DB_HOST')
+database = environ.get('DB_NAME')
+username = environ.get('DB_USER')
+password = environ.get('DB_PASSWORD')
+port = environ.get('DB_PORT')
+
+print(host, database, username, password, port)
 
 
 def get_db_connection():
@@ -93,9 +99,11 @@ def delete_user(id):
         return jsonify({'message': 'User not found'}), 404
     return jsonify(user)
 
+
 @app.get('/')
 def home():
     return send_file('static/index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=3000)
